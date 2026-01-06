@@ -1,0 +1,66 @@
+=================================================
+TFG GAMING CLUB - PRODUCTION CONFIGURATION
+=================================================
+
+Your cPanel MySQL Database Details:
+-----------------------------------
+Domain: TFG-Gaming.co.uk
+Database Name: tfggaming_site
+Database User: tfggaming_host
+Database Password: y51a)+-SSaKIq8(k
+Database Host: localhost
+Database Port: 3306
+
+=================================================
+CREATE .env FILE WITH THIS EXACT CONTENT:
+=================================================
+
+# MySQL Database Connection
+DATABASE_URL="mysql://tfggaming_host:y51a)+-SSaKIq8(k@localhost:3306/tfggaming_site"
+
+# NextAuth Configuration
+NEXTAUTH_SECRET="37lATkcdTM8AryISyw3xdQ2OAE220xpB"
+NEXTAUTH_URL="https://TFG-Gaming.co.uk"
+
+# Discord OAuth (Optional - Currently Hidden)
+DISCORD_CLIENT_ID="1448691094153068747"
+DISCORD_CLIENT_SECRET="2wJ0YPGtjqYdIHn0gdWS-3PM-ObMji_v"
+
+# Discord Webhook
+DISCORD_WEBHOOK_URL="https://discord.com/api/webhooks/1448280601596530749/WiOF7w89TMdwy4xKHATuInUiTlJ1XE_Z_JK-RKbCEocPsli9bx-C8D_jY2t_SyrciPLN"
+
+# Environment
+NODE_ENV="production"
+
+=================================================
+IMPORTANT NOTES:
+=================================================
+
+1. DATABASE CONNECTION STRING FORMAT:
+   mysql://USERNAME:PASSWORD@HOST:PORT/DATABASE
+   
+   Your string:
+   mysql://tfggaming_host:y51a)+-SSaKIq8(k@localhost:3306/tfggaming_site
+
+2. NEXTAUTH_URL:
+   - Set to: https://TFG-Gaming.co.uk
+   - Must match your actual domain
+   - Include https:// prefix
+   - No trailing slash
+
+3. PASSWORD SPECIAL CHARACTERS:
+   - Your password contains: ) + - ( 
+   - These are properly encoded in the connection string
+   - MySQL will handle them correctly
+
+4. SSL/HTTPS:
+   - Ensure your cPanel has SSL certificate installed
+   - NextAuth requires HTTPS in production
+   - Most cPanel hosts provide free Let's Encrypt SSL
+
+5. DISCORD REDIRECT URL:
+   If using Discord login, update Discord app settings:
+   - Redirect URL: https://TFG-Gaming.co.uk/api/auth/callback/discord
+   - Currently Discord login is hidden in UI (can be re-enabled)
+
+=================================================
